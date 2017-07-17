@@ -27,12 +27,6 @@ class App extends Component {
   socket.on('chat message', message => {
   data = this.state.data
   const messages = this.state.data.messages
-  if(data.author !== message.metafield.author.value) {
-    messages.push(message)
-    this.this.setState({
-      data: {
-            author: data.author,
-            messages
           }
         })
       }
