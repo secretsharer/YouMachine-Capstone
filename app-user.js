@@ -7,6 +7,7 @@ import uuid from 'node-uuid'
 import S from 'shorti'
 import _ from 'lodash'
 import { Input } from 'react-bootstrap'
+import Rebass, { Component } from 'rebass'
 
 class App extends Component {
 
@@ -18,6 +19,12 @@ class App extends Component {
       }
     }
   }
+
+  socket.on('chat message', message => {
+  data = this.state.data
+  const messages = this.state.data.messages
+
+
 
   componentDidMount() {
   let data = this.state.data
