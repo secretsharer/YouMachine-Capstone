@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import Cosmic from 'cosmicjs'
 import io from 'socket.io-client'
 import config from './config'
 import uuid from 'node-uuid'
@@ -21,19 +20,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-  let data = this.state.data
-  setTimeout(() => {
-    this.refs.author.refs.input.focus()
-  }, 100)
-  const socket = io()
-  Cosmic.getObjects(config, (err, res) => {
-    const messages = res.objects.type.messages
-    if (messages) {
-      messages.reverse()
-      this.setState({
-        data: {
-          author: data.author,
-          messages
+
         }
       })
     }
@@ -72,7 +59,7 @@ submitMessage() {
 
 render() {
 
-}
+
 
   const scroll_area_style = {
       ...S('h-' + (window.innerHeight - 140)),
