@@ -56,19 +56,11 @@ submitMessage() {
 }
 
 render() {
-
-
-
-  const scroll_area_style = {
-      ...S('h-' + (window.innerHeight - 140)),
-      overflowY: 'scroll'
-    }
-
     return (
       <div>
         <div>
           <h2>u-bot</h2>
-          <div ref="messages_scroll_area" style={ scroll_area_style }>
+          <div>
             <ul>{ messages_list }</ul>
           </div>
         </div>
