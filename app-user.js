@@ -22,9 +22,7 @@ class App extends Component {
   componentDidMount() {
 
         }
-      })
-    }
-  })
+
 
   socket.on('chat message', message => {
   data = this.state.data
