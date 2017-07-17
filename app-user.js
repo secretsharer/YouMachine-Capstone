@@ -20,12 +20,6 @@ class App extends Component {
     }
   }
 
-  socket.on('chat message', message => {
-  data = this.state.data
-  const messages = this.state.data.messages
-
-
-
   componentDidMount() {
   let data = this.state.data
   setTimeout(() => {
@@ -45,14 +39,46 @@ class App extends Component {
     }
   })
 
+  socket.on('chat message', message => {
+  data = this.state.data
+  const messages = this.state.data.messages
+  if(data.author !== message.metafield.author.value) {
+    messages.push(message)
+    this.this.setState({
+      data: {
+            author: data.author,
+            messages
+          }
+        })
+      }
+    })
+  }
 
+componentDidUpdate() {
 
+}
 
+setAuthor() {
+
+}
+
+createMessage() {
+
+}
+
+submitMessage() {
+
+}
+
+render() {
+
+}
 
   const scroll_area_style = {
       ...S('h-' + (window.innerHeight - 140)),
       overflowY: 'scroll'
     }
+
     return (
       <div>
         <div>

@@ -4,6 +4,6 @@ export default {
     type_slug: 'messages'
   },
   server: {
-    host: process.env.https://youmachine.herokuapp.com/ || 'http://localhost:3000'
+    host: process.env.youmachine.herokuapp.com/ || 'http://localhost:3000'
   }
 }
