@@ -2,7 +2,7 @@
   "name": "ubot",
   "version": "1.0.0",
   "description": "",
-  "main": "app-client.js",
+  "main": "app-user.js",
   "dependencies": {
     "babel": "^6.3.26",
     "babel-core": "^6.4.5",
@@ -25,8 +25,8 @@
   "scripts": {
     "start": "npm run production",
     "development": "npm run webpack-dev-server",
-    "production": "webpack -p && node app-entry.js",
-    "server": "nodemon app-entry.js",
+    "production": "webpack -p && ",
+    "server": "",
     "webpack-dev-server": "NODE_ENV=development webpack-dev-server --hot --inline --devtool inline-source-map --history-api-fallback"
   },
   "author": "",
