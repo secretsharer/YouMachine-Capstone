@@ -4,6 +4,7 @@
   "description": "chat-bot",
   "dependencies": {
     "express": "^4.15.2",
+    "node": "0.0.0",
     "socket.io": "^1.7.3"
   },
   "scripts": {
