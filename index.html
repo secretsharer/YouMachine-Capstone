@@ -15,6 +15,7 @@
   #messages li { padding: 5px 10px; }
   #messages li:nth-child(odd) { background: #dbc6be; }
   #messages { margin-bottom: 40px }
+  .bot-msg:before { content: "Bot says: "} 
 </style>
 
 </head>
@@ -36,6 +37,10 @@
           });
           socket.on('chat message', function(msg){
             $('#messages').append($('<li>').text(msg));
+            window.scrollTo(0, document.body.scrollHeight);
+          });
+          socket.on('bot message', function(msg){
+            $('#messages').append($('<li>').text(msg).addClass('bot-msg'));
             window.scrollTo(0, document.body.scrollHeight);
           });
         });

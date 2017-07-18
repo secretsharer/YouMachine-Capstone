@@ -7,9 +7,14 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+var emulator = function(msg) {
+  return msg.split('').reverse().join('');
+};
+
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+    io.emit('bot message', emulator(msg));
     console.log('message: ' + msg);
   });
 });
