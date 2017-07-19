@@ -8,18 +8,16 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-var emulator = function(msg) {
-  return msg.split('').reverse().join('');
-};
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    io.emit('bot message', emulator(msg));
+    // Step 2 goes here
+    io.emit('bot message', msg); // Step 6
     console.log('message: ' + msg);
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(8000, function(){
+  console.log('listening on *:8000');
 });
