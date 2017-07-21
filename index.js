@@ -1,20 +1,31 @@
 
 var app = require('express')();
 var http = require('http').Server(app);
-// initialzing a new instance of socket and pass it the http server object
 var io = require('socket.io')(http);
+var request = require('request');
+
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    // Step 2 goes here
-    io.emit('bot message', msg); // Step 6
-    console.log('message: ' + msg);
+
+    request.post(
+      'http://localhost:3000/message',
+      { json: { message: msg} },
+      function (error, response, body) {
+        if (error || response.statusCode !== 200) {
+          console.log("oopsies")
+          return
+        }
+        console.log(body);
+
+        io.emit('bot message', body.content); // Step 6
+        console.log('message: ' + body.content);
+      });
   });
 });
 
