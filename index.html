@@ -29,8 +29,9 @@
     to   { opacity: 100; }
   }
 }
-#chat-box { margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: fixed}
-#messages { list-style-type: none; margin: auto; padding: 0;}
+
+#chat-box { margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: absolute;}
+#messages { list-style-type: none; margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: absolute; }
 #messages li { padding: 7px 10px; }
 #messages li:nth-child(odd) { background: #cec0c0;}
 .bot-msg:before { content: "Ubot says: "}
@@ -40,7 +41,7 @@
   -webkit-animation: move 3s;
   /*animation-delay: 2s;*/
   animation-fill-mode: forwards;
-  position:
+  position: relative;
 }
 @keyframes move {
   from {
@@ -77,13 +78,22 @@ setInterval(function(){
   active++;
   if (active == colors.length) active = 0;
 }, 10000);
+
+function uFade() {
+  $('#u').toggleClass('#u', [3]))
+}
+// function showOrHide() {
+//      $('#element').toggleClass("hidden shown");
+//  }
 </script>
 
 </head>
 <body>
+
   <div id="ubot-header">Ubo+</div>
-  <div id="u">u++</div>
   <div id="chat-box"><ul id="messages"></ul></div>
+  <div id="u">u++</div>
+
   <form action="">
     <input id="m" autocomplete="off" /><button>Send</button>
   </form>
