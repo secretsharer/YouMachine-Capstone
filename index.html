@@ -8,7 +8,7 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-  <!-- header, large elements, reformat scrolling and input field, ease in, out backgr color, rotating elements, time tabs, large type, format bot text, cat image that comes in and out, chat wait icon,  --- text to speech? -->
+  <!-- cat image that comes in and out, chat wait icon,  --- text to speech? -->
 
   <style>
   * { margin: 0%; padding: 0; box-sizing: border-box; }
@@ -29,7 +29,6 @@
     to   { opacity: 100; }
   }
 }
-
 #chat-box { margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: absolute;}
 #messages { list-style-type: none; margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: absolute; }
 #messages li { padding: 7px 10px; }
@@ -43,13 +42,15 @@
   animation-fill-mode: forwards;
   position: relative;
 }
+
 @keyframes move {
   from {
     margin-left: 10%;
     width: 5%;
   }
   to {
-    margin-left: 50%;
+    margin-left: 42%;
+    /*42%; for heroku*/
     width: 5%;
   }
 }
@@ -59,11 +60,11 @@
     width: 5%;
   }
   to {
-    margin-left: 50%;
+    margin-left: 42%;
+    /*42% for heroku*/
     width: 5%;
   }
 }
-
 </style>
 
 <script>
