@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>you machine</title>
+  <title>Ubot</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+<!-- header, large elements, reformat scrolling and input field, ease in, out backgr color, rotating elements, time tabs, large type, format bot text, cat image that comes in and out, chat wait icon,  --- text to speech? -->
+
 <style>
   * { margin: 0%; padding: 0; box-sizing: border-box; }
-  body { font: 13px Helvetica;  color: #191926; background-color: #464666;}
-  form { background: #1c1c21; padding: 3px; position: fixed; bottom: 60px; width: 80%; margin-left: 10%; margin-right: 20%;}
-  form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-  form button { width: 9%; background: rgb(149, 146, 178); border: none; padding: 10px; }
-  #messages { list-style-type: none; margin: 0px; padding: 0;}
-  #messages li { padding: 5px 10px; }
-  #messages li:nth-child(odd) { background: #ccc1bf; }
-  #messages { margin-bottom: 40px }
-  .bot-msg:before { content: "Bot says: "}
+  body { font: 16px Helvetica; color: #191926;  background-color: #fcf7f7; transition: background 30s; }
+  form { background: #1c1c21; padding: 3px; position: fixed; bottom: 60px; width: 30%; margin-left: 60%}
+  form input { border: 0; padding: 10px; width: 78%; margin-right: .5%; }
+  form button { width: 21%; background: rgb(149, 146, 178); border: none; padding: 8px; }
+  #chat-box { margin-left: 9%; margin-top: 1%; height: 40%; width: 48%; border: none; padding: 6px; overflow-y: auto; height: 460px;}
+  #messages { list-style-type: none; margin: auto; padding: 0;}
+  #messages li { padding: 7px 10px; }
+  #messages li:nth-child(odd) { background: #cec0c0;}
+  #ubot-header { margin-left: 6%; margin-top: 3%; font: 70px Helvetica; color: #cec0c0;}
+  .bot-msg:before { content: "Ubot says: "}
 </style>
+<script>
+var colors = ['#f9f1ed', '#f9e5e5', '#fce7c4', '#edf2da', '#d9f1e3', '#9abbbf', '#9aa7bf', '#dddbf9'];
+var active = 0;
+setInterval(function(){
+    document.querySelector('body').style.background = colors[active];
+    active++;
+    if (active == colors.length) active = 0;
+}, 10000);
+</script>
 </head>
 <body>
-  <ul id="messages"></ul>
+  <div id="ubot-header">ubot</div>
+  <div id="chat-box"><ul id="messages"></ul></div>
       <form action="">
         <input id="m" autocomplete="off" /><button>Send</button>
       </form>
