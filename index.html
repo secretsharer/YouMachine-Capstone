@@ -13,11 +13,11 @@
   <style>
   * { margin: 0%; padding: 0; box-sizing: border-box; }
   body { font: 16px Helvetica; color: #191926;  background-color: #fcf7f7; transition: background 30s; }
-  form { background: #1c1c21; padding: 3px; position: fixed; bottom: 64px; width: 30%; margin-left: 56%}
+  form { background: #fc1a39; padding: 3px; position: fixed; bottom: 64px; width: 30%; margin-left: 58%;  -webkit-border-radius: 5px;}
   form input { border: 0; padding: 10px; width: 78%; margin-right: .5%; }
-  form button { width: 21%; background: #f2e9e3; border: none; padding: 8px; }
+  form button { width: 21%; background: #ede1e1; border: none; padding: 8px; }
 
-  #ubot-header { margin-left: 6%; margin-top: 3%; font: 70px Helvetica; color: #cec0c0;
+  #ubot-header { margin-left: 5%; margin-top: 3%; font: 70px Helvetica; color: #cec0c0;
     -webkit-animation: fadein 9s;
   }
   @-webkit-keyframes fadein {
@@ -36,7 +36,7 @@
 #messages li:nth-child(odd) { background: #cec0c0;}
 .bot-msg:before { content: "Ubot says: "}
 
-#u { font: 390px Helvetica; color: #cec0c0;
+#u { font: 390px Helvetica; color: #cec0c0; margin-top: auto;
   animation: move 3s;
   -webkit-animation: move 3s;
   /*animation-delay: 2s;*/
@@ -48,7 +48,6 @@
     margin-left: 10%;
     width: 5%;
   }
-
   to {
     margin-left: 50%;
     width: 5%;
@@ -59,14 +58,11 @@
     margin-left: 10%;
     width: 5%;
   }
-
   to {
     margin-left: 50%;
     width: 5%;
   }
 }
-
-
 
 </style>
 
@@ -78,13 +74,6 @@ setInterval(function(){
   active++;
   if (active == colors.length) active = 0;
 }, 10000);
-
-function uFade() {
-  $('#u').toggleClass('#u', [3]))
-}
-// function showOrHide() {
-//      $('#element').toggleClass("hidden shown");
-//  }
 </script>
 
 </head>
