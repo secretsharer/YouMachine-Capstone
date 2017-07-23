@@ -3,58 +3,111 @@
 <head>
   <title>Ubot</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <!-- header, large elements, reformat scrolling and input field, ease in, out backgr color, rotating elements, time tabs, large type, format bot text, cat image that comes in and out, chat wait icon,  --- text to speech? -->
 
-<!-- header, large elements, reformat scrolling and input field, ease in, out backgr color, rotating elements, time tabs, large type, format bot text, cat image that comes in and out, chat wait icon,  --- text to speech? -->
-
-<style>
+  <style>
   * { margin: 0%; padding: 0; box-sizing: border-box; }
   body { font: 16px Helvetica; color: #191926;  background-color: #fcf7f7; transition: background 30s; }
-  form { background: #1c1c21; padding: 3px; position: fixed; bottom: 60px; width: 30%; margin-left: 60%}
+  form { background: #1c1c21; padding: 3px; position: fixed; bottom: 64px; width: 30%; margin-left: 56%}
   form input { border: 0; padding: 10px; width: 78%; margin-right: .5%; }
-  form button { width: 21%; background: rgb(149, 146, 178); border: none; padding: 8px; }
-  #chat-box { margin-left: 9%; margin-top: 1%; height: 40%; width: 48%; border: none; padding: 6px; overflow-y: auto; height: 460px;}
-  #messages { list-style-type: none; margin: auto; padding: 0;}
-  #messages li { padding: 7px 10px; }
-  #messages li:nth-child(odd) { background: #cec0c0;}
-  #ubot-header { margin-left: 6%; margin-top: 3%; font: 70px Helvetica; color: #cec0c0;}
-  .bot-msg:before { content: "Ubot says: "}
+  form button { width: 21%; background: #f2e9e3; border: none; padding: 8px; }
+
+  #ubot-header { margin-left: 6%; margin-top: 3%; font: 70px Helvetica; color: #cec0c0;
+    -webkit-animation: fadein 9s;
+  }
+  @-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 100; }
+  }
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 100; }
+  }
+}
+#chat-box { margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: fixed}
+#messages { list-style-type: none; margin: auto; padding: 0;}
+#messages li { padding: 7px 10px; }
+#messages li:nth-child(odd) { background: #cec0c0;}
+.bot-msg:before { content: "Ubot says: "}
+
+#u { font: 390px Helvetica; color: #cec0c0;
+  animation: move 3s;
+  -webkit-animation: move 3s;
+  /*animation-delay: 2s;*/
+  animation-fill-mode: forwards;
+  position:
+}
+@keyframes move {
+  from {
+    margin-left: 10%;
+    width: 5%;
+  }
+
+  to {
+    margin-left: 50%;
+    width: 5%;
+  }
+}
+@-webkit-keyframes move {
+  from {
+    margin-left: 10%;
+    width: 5%;
+  }
+
+  to {
+    margin-left: 50%;
+    width: 5%;
+  }
+}
+
+
+
 </style>
+
 <script>
-var colors = ['#f9f1ed', '#c6cdce', '#e1e2de', '##cedddd', '#d7e0ef', '#afbacc', '#617aa3', '#d3d0e0'];
+var colors = ['#f9f7f7', '#f9f1ed', '#c6cdce', '#e1e2de', '##cedddd', '#d7e0ef', '#afbacc', '#617aa3', '#d3d0e0'];
 var active = 0;
 setInterval(function(){
-    document.querySelector('body').style.background = colors[active];
-    active++;
-    if (active == colors.length) active = 0;
+  document.querySelector('body').style.background = colors[active];
+  active++;
+  if (active == colors.length) active = 0;
 }, 10000);
 </script>
+
 </head>
 <body>
-  <div id="ubot-header">ubot</div>
+  <div id="ubot-header">Ubo+</div>
+  <div id="u">u++</div>
   <div id="chat-box"><ul id="messages"></ul></div>
-      <form action="">
-        <input id="m" autocomplete="off" /><button>Send</button>
-      </form>
-      <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-      <script>
-        $(function () {
-          var socket = io();
-          $('form').submit(function(){
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
-          });
-          socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
-            window.scrollTo(0, document.body.scrollHeight);
-          });
-          socket.on('bot message', function(msg){
-            $('#messages').append($('<li>').text(msg).addClass('bot-msg'));
-            window.scrollTo(0, document.body.scrollHeight);
-          });
-        });
-      </script>
+  <form action="">
+    <input id="m" autocomplete="off" /><button>Send</button>
+  </form>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+  $(function () {
+    var socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    socket.on('bot message', function(msg){
+      $('#messages').append($('<li>').text(msg).addClass('bot-msg'));
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  });
+  </script>
 </body>
 </html>
+
+<!-- onclick="$(this).addClass('rotated');"  -->
