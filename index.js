@@ -3,11 +3,11 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var request = require('request');
+var say = require('say');
 const PORT = process.env.PORT || 8000
 http.listen(PORT, function(){
   console.log('listening on *:' + PORT);
 });
-
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -15,6 +15,11 @@ app.get('/', function(req, res){
 
 //user set up
 //var numUsers = 0;
+//var voices = function(){
+// Agnes, Kathy, Princess, Vicki, Victoria
+// Albert, Alex, Bruce, Fred, Junior, Ralph
+// Bad News, Bahh, Bells, Boing, Bubbles, Cellos, Deranged, Good News, Hysterical, Pipe Organ, Trinoids, Whisper, Zarvox
+// }
 
 io.on('connection', function(socket){
 
@@ -23,7 +28,8 @@ io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-
+    say.speak(msg, 'Vicki')
+    // say.stop();
 
     request.post(
       'http://localhost:3000/message',
@@ -35,7 +41,8 @@ io.on('connection', function(socket){
         }
         console.log(body);
 
-        io.emit('bot message', body.content); // Step 6
+        io.emit('bot message', body.content);// Step 6
+        say.speak(body.content)
         console.log('message: ' + body.content);
       });
     });
