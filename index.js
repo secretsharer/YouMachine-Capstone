@@ -16,10 +16,8 @@ app.get('/', function(req, res){
 //user set up
 //var numUsers = 0;
 //var voices = function(){
-// Agnes, Kathy, Princess, Vicki, Victoria
-// Albert, Alex, Bruce, Fred, Junior, Ralph
-// Bad News, Bahh, Bells, Boing, Bubbles, Cellos, Deranged, Good News, Hysterical, Pipe Organ, Trinoids, Whisper, Zarvox
-// }
+// Princess, Vicki, Fiona, Samantha, Kyoko, Ioana, Alice, Tessa, Paulina, Monica, Moira, Karen, Diego, Daniel, Anna, Milena, Fred, Junior, Ralph, Bad News,
+
 
 io.on('connection', function(socket){
 
@@ -28,7 +26,7 @@ io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    say.speak(msg, 'Vicki')
+    say.speak(msg, 'Daniel', 1.0)
     // say.stop();
 
     request.post(
