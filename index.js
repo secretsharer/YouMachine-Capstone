@@ -16,18 +16,28 @@ app.get('/', function(req, res){
 //user set up
 //var numUsers = 0;
 //var voices = function(){
-// Princess, Vicki, Fiona, Samantha, Kyoko, Ioana, Alice, Tessa, Paulina, Monica, Moira, Karen, Diego, Daniel, Anna, Milena, Fred, Junior, Ralph, Bad News,
+// Princess, Vicki, Fiona, Samantha, Alice, Tessa, Monica, Moira, Diego, Daniel, Anna, Milena, Fred, Junior, Ralph, Bad News,
 
 
 io.on('connection', function(socket){
 
   //user set up
   //var addedUser = false;
-
+  //var socket = io('/user');
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    say.speak(msg, 'Daniel', 1.0)
+    say.speak(msg, 'Moira', 1.0)
     // say.stop();
+
+    //To set up a custom namespace, you can call the of function on the server-side:
+
+    // var nsp = io.of('/user');
+    // nsp.on('connection', function(socket){
+    //   say.speak('Greetings', user);
+    // });
+    // nsp.emit('hi', user);
+
+    //client side, tell Socket.IO client to connect to that namespace:
 
     request.post(
       'http://localhost:3000/message',
@@ -40,7 +50,7 @@ io.on('connection', function(socket){
         console.log(body);
 
         io.emit('bot message', body.content);// Step 6
-        say.speak(body.content)
+        say.speak(body.content, 'Daniel', 1.0)
         console.log('message: ' + body.content);
       });
     });
@@ -61,12 +71,12 @@ io.on('connection', function(socket){
   //   if (addedUser) return;
 
   // store the username in the socket session for this client
-    // socket.username = username;
-    // ++numUsers;
-    // addedUser = true;
-    // socket.emit('login', {
-    //   numUsers: numUsers
-    // });
+  // socket.username = username;
+  // ++numUsers;
+  // addedUser = true;
+  // socket.emit('login', {
+  //   numUsers: numUsers
+  // });
   // echo globally (all clients) that a person has connected
   //   socket.broadcast.emit('user joined', {
   //     username: socket.username,
