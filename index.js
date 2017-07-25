@@ -13,31 +13,12 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-//user set up
-//var numUsers = 0;
-//var voices = function(){
-// Princess, Vicki, Fiona, Samantha, Alice, Tessa, Monica, Moira, Diego, Daniel, Anna, Milena, Fred, Junior, Ralph, Bad News,
-
-
 io.on('connection', function(socket){
 
-  //user set up
-  //var addedUser = false;
-  //var socket = io('/user');
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    say.speak(msg, 'Moira', 1.0)
+    // say.speak(msg, 'Daniel', 1.1)
     // say.stop();
-
-    //To set up a custom namespace, you can call the of function on the server-side:
-
-    // var nsp = io.of('/user');
-    // nsp.on('connection', function(socket){
-    //   say.speak('Greetings', user);
-    // });
-    // nsp.emit('hi', user);
-
-    //client side, tell Socket.IO client to connect to that namespace:
 
     request.post(
       'http://localhost:3000/message',
@@ -50,14 +31,34 @@ io.on('connection', function(socket){
         console.log(body);
 
         io.emit('bot message', body.content);// Step 6
-        say.speak(body.content, 'Daniel', 1.0)
+        // say.speak(body.content, 'Moira', 1.0)
         console.log('message: ' + body.content);
       });
     });
   });
 
 
+//////////////////////////////////////////////////////////////////////////////
 
+  //user set up
+  //var numUsers = 0;
+  //var voices = [
+  // Princess, Fiona, Samantha, Moira,  Daniel, Fred, Junior, Ralph ]
+
+
+  //To set up a custom namespace, you can call the of function on the server-side:
+
+  //user set up
+  //var addedUser = false;
+  //var socket = io('/user');
+
+  // var nsp = io.of('/user');
+  // nsp.on('connection', function(socket){
+  //   say.speak('Greetings', user);
+  // });
+  // nsp.emit('hi', user);
+
+  //client side, tell Socket.IO client to connect to that namespace:
 
 
   // when the client emits 'new message', this listens and executes

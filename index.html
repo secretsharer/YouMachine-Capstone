@@ -9,7 +9,6 @@
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
   <!-- cat image that comes in and out, chat wait icon,  --- text to speech? -->
-
   <style>
   * { margin: 0%; padding: 0; box-sizing: border-box; }
   body { font: 16px Helvetica; color: #191926;  background-color: #fcf7f7; transition: background 30s; }
@@ -29,6 +28,7 @@
     to   { opacity: 100; }
   }
 }
+/*img { position: absolute; margin-right: 8%; }*/
 #chat-box { margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: absolute;}
 #messages { list-style-type: none; margin-left: 5%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: absolute; }
 #messages li { padding: 7px 10px; }
@@ -68,7 +68,7 @@
 </style>
 
 <script>
-var colors = ['#f9f7f7', '#f9f1ed', '#c6cdce', '#e1e2de', '##cedddd', '#d7e0ef', '#39419b', '#afbacc', '#617aa3', '#d3d0e0', '#151c4c'];
+var colors = ['#f9f7f7', '#f9f1ed', '#254c4f', '#d7e0ef', '#337c54', '#77480f', '#39419b', '#afbacc', '#617aa3', '#b73633', '#d3d0e0', '#151c4c', '#bab853', '#cedddd'];
 var active = 0;
 setInterval(function(){
   document.querySelector('body').style.background = colors[active];
@@ -81,6 +81,7 @@ setInterval(function(){
 <body>
 
   <div id="ubot-header">Ubo+</div>
+  <!-- <img src="greenphone.jpeg" alt="Vintage sea foam green telephone" style="width:128px;height:128px;"> -->
   <div id="chat-box"><ul id="messages"></ul></div>
   <div id="u">u++</div>
 
