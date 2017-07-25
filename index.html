@@ -78,6 +78,7 @@ setInterval(function(){
 </script>
 
 </head>
+
 <body>
 
   <div id="ubot-header">Ubo+</div>
@@ -90,6 +91,7 @@ setInterval(function(){
   </form>
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
   <script>
   $(function () {
     var socket = io();
@@ -99,14 +101,23 @@ setInterval(function(){
       return false;
     });
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+      $('#messages').prepend($('<li>').text(msg));
+      // responsiveVoice.speak(msg);
       window.scrollTo(0, document.body.scrollHeight);
     });
     socket.on('bot message', function(msg){
-      $('#messages').append($('<li>').text(msg).addClass('bot-msg'));
-      window.scrollTo(0, document.body.scrollHeight);
+      //if string is empty "", msg = i am a dumb robot
+      var botMessageLi = $('<li>').text("...").addClass('bot-msg')
+      $('#messages').prepend(botMessageLi);
+      setTimeout(function(){
+        botMessageLi.text(msg)
+        responsiveVoice.speak(msg, "UK English Male", {volume: 4});
+        window.scrollTo(0, document.body.scrollHeight);
+
+      }, 1500);
+
+      });
     });
-  });
-  </script>
-</body>
-</html>
+    </script>
+  </body>
+  </html>

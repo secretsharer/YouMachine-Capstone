@@ -17,7 +17,7 @@ io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    say.speak(msg, 'Daniel', 1.1)
+    // say.speak(msg, 'Daniel', 1.1)
     // say.stop();
 
     request.post(
