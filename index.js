@@ -18,11 +18,9 @@ io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    // say.speak(msg, 'Moira', 1.1)
-    // say.stop();
 
     request.post(
-      'example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com',
+      'xtvsb9kpah.us-west-2.elasticbeanstalk.com',
       { json: { message: msg} },
       function (error, response, body) {
         if (error || response.statusCode !== 200) {
@@ -32,7 +30,6 @@ io.on('connection', function(socket){
         console.log(body);
 
         io.emit('bot message', body.content);// Step 6
-        // say.speak(body.content, 'Moira', 1.0)
         console.log('message: ' + body.content);
       });
     });
