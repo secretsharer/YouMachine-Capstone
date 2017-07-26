@@ -4,6 +4,8 @@
   <title>Ubot</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="shortcut icon" type="image/x-icon"
+ href="favicon.ico" />
   <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -102,7 +104,7 @@ setInterval(function(){
     });
     socket.on('chat message', function(msg){
       $('#messages').prepend($('<li>').text(msg));
-      // responsiveVoice.speak(msg);
+      responsiveVoice.speak(msg, "UK English Female", {volume: 6});
       window.scrollTo(0, document.body.scrollHeight);
     });
     socket.on('bot message', function(msg){
@@ -111,10 +113,10 @@ setInterval(function(){
       $('#messages').prepend(botMessageLi);
       setTimeout(function(){
         botMessageLi.text(msg)
-        responsiveVoice.speak(msg, "UK English Male", {volume: 4});
+        responsiveVoice.speak(msg, "UK English Male", {volume: 6});
         window.scrollTo(0, document.body.scrollHeight);
 
-      }, 1500);
+      }, 2500);
 
       });
     });
