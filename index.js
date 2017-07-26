@@ -18,6 +18,7 @@ io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+    console.log('before');
 
     request.post(
       'example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com/message?message=',
@@ -27,7 +28,9 @@ io.on('connection', function(socket){
           console.log("Could not connect to Ubot :(")
           return
         }
+        console.log("================");
         console.log(body);
+        console.log("================");
 
         io.emit('bot message', body.content);// Step 6
         console.log('message: ' + body.content);
@@ -36,7 +39,7 @@ io.on('connection', function(socket){
   });
 
 
-//////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   //user set up
   //var numUsers = 0;
