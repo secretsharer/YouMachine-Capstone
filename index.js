@@ -22,7 +22,7 @@ io.on('connection', function(socket){
     // say.stop();
 
     request.post(
-      'http://localhost:3000/message',
+      'example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com',
       { json: { message: msg} },
       function (error, response, body) {
         if (error || response.statusCode !== 200) {
