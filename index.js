@@ -20,7 +20,7 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
 
     request.post(
-      'xtvsb9kpah.us-west-2.elasticbeanstalk.com',
+      'example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com/message?',
       { json: { message: msg} },
       function (error, response, body) {
         if (error || response.statusCode !== 200) {
