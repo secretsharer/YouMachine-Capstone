@@ -104,7 +104,7 @@ setInterval(function(){
     });
     socket.on('chat message', function(msg){
       $('#messages').prepend($('<li>').text(msg));
-      responsiveVoice.speak(msg, "UK English Female", {volume: 6});
+      responsiveVoice.speak(msg, "UK English Male", {volume: 6}, {rate: 1.5});
       window.scrollTo(0, document.body.scrollHeight);
     });
     socket.on('bot message', function(msg){
@@ -113,7 +113,7 @@ setInterval(function(){
       $('#messages').prepend(botMessageLi);
       setTimeout(function(){
         botMessageLi.text(msg)
-        responsiveVoice.speak(msg, "UK English Male", {volume: 6});
+        responsiveVoice.speak(msg, "Hindi Female", {volume: 6}, {rate: 1.00});
         window.scrollTo(0, document.body.scrollHeight);
 
       }, 3000);
