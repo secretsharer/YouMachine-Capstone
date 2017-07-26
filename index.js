@@ -4,7 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var request = require('request');
 var say = require('say');
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 80
 
 http.listen(PORT, function(){
   console.log('listening on *:' + PORT);
