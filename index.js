@@ -30,6 +30,7 @@ io.on('connection', function(socket){
         }
         console.log("================");
         console.log(body);
+        console.log("message == " + msg);
         console.log("================");
 
         io.emit('bot message', body.content);// Step 6
