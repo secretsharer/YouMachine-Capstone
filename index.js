@@ -21,7 +21,7 @@ io.on('connection', function(socket){
     console.log('before');
 
     request.post(
-      'example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com/message?message=',
+      'http://example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com/message?message=',
       { json: { message: msg} },
       function (error, response, body) {
         if (error || response.statusCode !== 200) {
