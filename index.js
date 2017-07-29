@@ -17,23 +17,38 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-    console.log('before');
+    io.emit('chat message', msg.message);
+
+
+//Adding UMachine Flask API Call
+    // var endpoint = 'http://example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com/message';
+    // if(Math.random() >= 0.5) {
+    //   endpoint = 'https://youmachine-174420.appspot.com/message';
+    // }
+    // console.log("Sending message to bot at endpoint: " + endpoint);
+    // request.post(endpoint,
+    //   { json: { message: msg.message} },
+    //   function (error, response, body) {
+
+    // request.post(
+    //     'http://localhost:3000/message',
+    //     // 'http://example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com/message',
+    // { json: { message: msg.message} },
+    // function (error, response, body) {
+    //
+    // console.log('before');
 
     request.post(
       'http://example-env.xtvsb9kpah.us-west-2.elasticbeanstalk.com/message',
-      { json: { message: msg} },
+      { json: { message: msg.message} },
       function (error, response, body) {
         if (error || response.statusCode !== 200) {
           console.log("Could not connect to Ubot :(")
           return
         }
-        console.log("================");
-        console.log(body);
-        console.log("message == " + msg);
-        console.log("================");
 
-        io.emit('bot message', body.content);// Step 6
+        io.emit('bot message', body.content);
+
         console.log('message: ' + body.content);
       });
     });
@@ -44,11 +59,8 @@ io.on('connection', function(socket){
 
   //user set up
   //var numUsers = 0;
-  //var voices = [
-  // Princess, Fiona, Samantha, Moira,  Daniel, Fred, Junior, Ralph ]
 
-
-  //To set up a custom namespace, you can call the of function on the server-side:
+  //custom namespace, call the of function on the server-side:
 
   //user set up
   //var addedUser = false;
