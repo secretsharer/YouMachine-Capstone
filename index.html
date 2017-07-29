@@ -16,7 +16,9 @@
   form input { border: 0; padding: 10px; width: 78%; margin-right: .5%; }
   form button { width: 21%; background: #ede1e1; border: none; padding: 8px; }
 
+  #name { border: none, }
   #ubot-header { margin-left: 4%; margin-top: 3%; font: 70px Helvetica; color: #cec0c0;
+
     -webkit-animation: fadein 7s;
   }
   @-webkit-keyframes fadein {
@@ -33,7 +35,7 @@
 #messages { list-style-type: none; margin-left: 4%; margin-top: 2%; height: 44%; width: 43%; border: none; padding: 6px; overflow-y: auto; height: 470px; position: absolute; }
 #messages li { padding: 7px 10px; }
 #messages li:nth-child(odd) { background: #cec0c0;}
-.bot-msg:before { content: "Ubot says: "}
+.bot-msg:before { content: "Ubot: "}
 
 #u { font: 390px Helvetica; color: #cec0c0; margin-top: auto;
   animation: move 2.5s;
@@ -49,8 +51,9 @@
     width: 5%;
   }
   to {
-    margin-left: 48%;
-    /*50%; for local*/
+
+    margin-left: 46%;
+    /*42%; for heroku*/
     width: 5%;
   }
 }
@@ -60,8 +63,9 @@
     width: 5%;
   }
   to {
-    margin-left: 48%;
-    /*50% for local*/
+
+    margin-left: 46%;
+    /*42% for heroku*/
     width: 5%;
   }
 }
@@ -85,7 +89,8 @@ setInterval(function(){
   <div id="u">u++</div>
 
   <form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
+    <input id="name" autocomplete="off" placeholder="type your name" value=""/>
+    <input id="m" placeholder="enter a message to ubot" autocomplete="off" /><button>Send</button>
   </form>
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -94,22 +99,24 @@ setInterval(function(){
   $(function () {
     var socket = io();
     $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
+      socket.emit('chat message', {
+        name: $('#name').val(),
+        message: $('#m').val()
+      });
       $('#m').val('');
       return false;
     });
     socket.on('chat message', function(msg){
-      $('#messages').prepend($('<li>').text(msg));
-      responsiveVoice.speak(msg, "UK English Male", {volume: 6}, {rate: 1.5});
+      $('#messages').prepend($('<li>').text(msg.name + ": " + msg.message));
+      responsiveVoice.speak(msg.message, "UK English Male", {volume: 7.5}, {rate: 1.5});
       window.scrollTo(0, document.body.scrollHeight);
     });
     socket.on('bot message', function(msg){
-      //if string is empty "", msg = i am a dumb robot
       var botMessageLi = $('<li>').text("...").addClass('bot-msg')
       $('#messages').prepend(botMessageLi);
       setTimeout(function(){
         botMessageLi.text(msg)
-        responsiveVoice.speak(msg, "Hindi Female", {volume: 6}, {rate: 1.00});
+        responsiveVoice.speak(msg, "Hindi Female", {volume: 7.5}, {rate: 1.00});
         window.scrollTo(0, document.body.scrollHeight);
 
       }, 3000);
