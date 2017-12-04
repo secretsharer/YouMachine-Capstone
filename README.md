@@ -1,5 +1,5 @@
 # youmachine
-**// Ada C7 Capstone \\\**    
+**Ada C7 Capstone**     
 
 To graduate at from Ada Developers Academy, in our last month we are required to create a full-scale application utilizing at minimum, 3 technolgies that are new to us. As per usual, I bit off a little more than I should chew. I wanted to create an ML-based chatbot trained on my outgoing emails. The plan for Ubot was born; a chat bot trained to talk like you...or in this case me.     
 
