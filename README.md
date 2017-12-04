@@ -18,9 +18,9 @@ Lasagne
 TensorFlow  
 
 Spoiler Alert: It worked! I created the emulator, complete with API/socketing to make Ubot speak. With some help from the Ada staff and advisors, we also trained YouMachine (ubot+) using char-rnn and some extensive Sci-Py libraries and TensorFlow. 
-Caveat: I disconnected the Flask API we built that provided the messages from the training-model. The responses were so unpredicatble and sometimes offensive that I was really freaked out! (My sent messages were never that scary!)  
+Caveat: I disconnected the Flask API we built that provided the messages from the training-model. The responses were so unpredicatble and sometimes offensive that I was really freaked out! (My sent messages were never that scary!) However, talking to Ubot as is with the emulator is still lots of fun.
 
-**Ubot conneted to the speech emulator API: https://youmachine.herokuapp.com/**  (Current version is optimized for Chrome. Turn up the volume to hear Ubot speak.)
+**Ubot connected to speech emulator API: https://youmachine.herokuapp.com/**  (Current version is optimized for Chrome. Turn up the volume to hear Ubot speak.)
 
 **Coming soon...**
 
