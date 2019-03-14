@@ -50,7 +50,8 @@ Type   |  Usage
 ### **References** <a name="Refs"></a>
 
 > https://github.com/karpathy/char-rnn  
-> https://github.com/crazydonkey200/tensorflow-char-rnn
+> https://github.com/crazydonkey200/tensorflow-char-rnn   
+> https://hjweide.github.io/char-rnn
 
 ### **Findings** <a name="Findings"></a>   
 
